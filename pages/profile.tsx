@@ -1,10 +1,10 @@
 import Page from '@/components/page'
 import Section from '@/components/section'
 
-const Index = () => (
+const Profile = () => (
 	<Page>
-		<h1>PHR home section</h1>
+		<div>PHR profile section</div>
 	</Page>
 )
 
-export default Index
+export default Profile

@@ -1,22 +1,34 @@
+'use client'
+
+
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useTheme } from 'next-themes'
+import { useState, useEffect } from 'react'
+import { Button, ButtonGroup } from '@chakra-ui/react'
+import Image from 'next/image'
 
 const links = [
-	{ label: 'Story', href: '/story' },
-	{ label: 'Recipes', href: '/recipes' },
+	{ label: 'Profile', href: '/profile' },
+	{ label: 'Projects', href: '/projects' }
 ]
 
 const Appbar = () => {
 	const router = useRouter()
+	const isHomePage = router.pathname === '/';
+	const isProjectsPage = router.pathname === '/projects';
+	const isProfilePage = router.pathname === '/profile';
+	const h1Content = isHomePage ? 'Home' : isProjectsPage ? 'Projects' : isProfilePage ? 'Profile' : 'PHR Agent App';
 
 	return (
 		<div className='fixed top-0 left-0 z-20 w-full bg-zinc-900 pt-safe'>
-			<header className='border-b bg-zinc-100 px-safe dark:border-zinc-800 dark:bg-zinc-900'>
+			<header className='border-b-2  px-safe border-zinc-800 bg-zinc-900'>
 				<div className='mx-auto flex h-20 max-w-screen-md items-center justify-between px-6'>
 					<Link href='/'>
-						<h1 className='font-medium'>Rice Bowl</h1>
+						<h1 className='font-black text-zinc-100 hover:text-zinc-400'>
+							{h1Content}
+						</h1>
 					</Link>
-
 					<nav className='flex items-center space-x-6'>
 						<div className='hidden sm:block'>
 							<div className='flex items-center space-x-6'>
@@ -24,26 +36,16 @@ const Appbar = () => {
 									<Link
 										key={label}
 										href={href}
-										className={`text-sm ${
-											router.pathname === href
-												? 'text-indigo-500 dark:text-indigo-400'
-												: 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-50'
-										}`}
+										className={`text-sm ${router.pathname === href
+											? ' text-indigo-400'
+											: ' text-zinc-400 font-bold hover:text-zinc-50'
+											}`}
 									>
 										{label}
 									</Link>
 								))}
 							</div>
 						</div>
-
-						<div
-							title='Gluten Free'
-							className='h-10 w-10 rounded-full bg-zinc-200 bg-cover bg-center shadow-inner dark:bg-zinc-800'
-							style={{
-								backgroundImage:
-									'url(https://images.unsplash.com/photo-1612480797665-c96d261eae09?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80)',
-							}}
-						/>
 					</nav>
 				</div>
 			</header>

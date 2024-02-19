@@ -1,10 +1,12 @@
 import Page from '@/components/page'
 import Section from '@/components/section'
 
-const Index = () => (
+const Projects = () => (
 	<Page>
-		<h1>PHR home section</h1>
+		<div>
+			<h1>PHR project section</h1>
+		</div>
 	</Page>
 )
 
-export default Index
+export default Projects

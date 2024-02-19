@@ -7,5 +7,9 @@ const withPWA = require('next-pwa')({
 })
 
 module.exports = withPWA({
-	reactStrictMode: true,
+	images: {
+    domains: [
+      "png.pngtree.com"
+    ],
+  },
 })
