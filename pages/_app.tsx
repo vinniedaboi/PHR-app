@@ -1,15 +1,14 @@
 import type { AppProps } from 'next/app'
-import { ThemeProvider } from 'next-themes'
+import { ThemeProvider } from 'next-themes' 
 import '@/styles/globals.css'
+import '@mantine/core/styles/Card.css';
+import '@mantine/core/styles/global.css';
+import { MantineProvider } from '@mantine/core'
 
 export default function App({ Component, pageProps }: AppProps) {
-	return (
-		<ThemeProvider
-			attribute='class'
-			defaultTheme='system'
-			disableTransitionOnChange
-		>
-			<Component {...pageProps} />
-		</ThemeProvider>
-	)
+  return (
+		<MantineProvider>
+        <Component {...pageProps} />
+		</MantineProvider>
+  )
 }
