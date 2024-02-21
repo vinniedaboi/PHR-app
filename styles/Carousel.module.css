@@ -1,0 +1,10 @@
+.control {
+    height: 20px; /* Default height for smaller screens or devices */
+    outline: 2px solid white;
+    outline-offset: -2px;
+    background-color: white;
+}
+
+.controls{
+  top: 100px;
+}
