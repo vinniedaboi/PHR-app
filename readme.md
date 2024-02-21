@@ -1,56 +1,64 @@
-<p align="center">
-	<img alt="Rice Bowl" src="public/images/icon-512.png" width="90">
-	<h2 align="center">Next PWA Template</h2>
-</p>
+# PHR - Property Hub Resource
 
-<p align="center">Fluffless app template to inspire less</p>
+Welcome to the PHR App Project
 
-<p align="center">
-	<a href="https://next-pwa-template.now.sh">Live demo</a>
-</p>
+## About
 
-<p align="center">
-	<a href="https://web.dev/measure">
-		<img alt="100% lighthouse scores" src="https://img.shields.io/badge/lighthouse-100%25-845EF7.svg?logo=lighthouse&logoColor=white&style=flat-square" />
-	</a>
-</p>
+PHR is a comprehensive application tailored for property agents, providing tools for efficient project selling, appointment and sales management, and team collaboration. PHR aims to streamline workflows and enhance productivity for professionals in the real estate industry.
+
+
+## Author
+
+- **Author:** Vincent Ng
+- **Contact:** vinnie5224@gmail.com
+
+## Updates
+
+Currently no updates as this is a heavy WIP
 
 ## Features
 
-- ✨ Fluffless PWA using Next 13
-- 🌗 Lovely night/day themes
-- 🦄 Easily removable [nice-to-haves](#use-only-what-you-need)
-- 📱 Native-like mobile experience
-- 📦 Neatly wrapped like that avocado you got for christmas
+🏢 **Project Management:** Efficiently manage and track various real estate projects for you to sell.
 
-## Getting started
+📅 **Appointment Scheduler and Sales Tracker:** Easily schedule and organize client appointments and track sales
 
-1. [Use this template](https://github.com/mvllow/next-pwa-template/generate)
-2. Replace `public/images` with your own
-3. Enjoy ✨
+👥 **Team Collaboration and Personal Profiles:** Enhance teamwork with features for team communication and task assignments. Have your own identity in teams and show-off achievements
 
-## Use only what you need
+## Technologies Used
 
-Fluffless doesn't mean "start with nothing". The goal of this template is to be an entry into maintainable apps.
+This project utilizes modern web technologies to provide a seamless user experience:
 
-**The essentials**
+- **Next.JS 13** A framework for building web apps
 
-- Typescript, made easy with Next.js
-- [tailwindcss](https://github.com/tailwindlabs/tailwindcss) for utility-first styling
-- [next-pwa](https://github.com/shadowwalker/next-pwa) for offline support
+- **Firebase:** A cloud-based platform for app development, providing features like authentication and real-time databases.
 
-**Nice to haves**
+- **Next-PWA-template** An amazing template for building web apps, check it out [here]("https://github.com/mvllow/next-pwa-template")
 
-- [next-themes](https://github.com/pacocoursey/next-themes) or similar for low stress theming
+## Getting Started
 
-## Gallery
+To set up the project locally, follow these steps:
 
-### Desktop
+1. **Clone the Repository:**
+    ```bash
+    git clone https://github.com/your-username/PHR.git
+    ```
 
-<img width="1728" alt="Rice Bowl PWA on macOS in dark mode" src="https://github.com/mvllow/next-pwa-template/assets/1474821/889bef1b-af58-4efa-b1f3-3ea021ec9760">
+2. **Install Dependencies:**
+    ```bash
+    cd PHR
+    npm install
+    ```
 
-### Mobile
+3. **Run the App:**
+    ```bash
+    npm start
+    ```
 
-<img width="360" alt="Rice Bowl PWA on iOS in light mode" src="https://github.com/mvllow/next-pwa-template/assets/1474821/1f0fa36e-23c7-4bcf-aa6e-f447559cae62" />
+## Deployment
 
-<img width="360" alt="Rice Bowl PWA on iOS in dark mode" src="https://github.com/mvllow/next-pwa-template/assets/1474821/2fac61d0-dc29-4022-8b39-003306f80fb4" />
+To deploy the app to production, you can use services like Vercel or Netlify. Make sure to configure environment variables and deployment settings accordingly.
+
+## Currently Working On
+
+- Implementing features mentioned above
+
