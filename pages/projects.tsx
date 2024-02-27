@@ -1,16 +1,16 @@
 import Page from '@/components/page'
 import Section from '@/components/section'
-import { CustomCard } from '@/components/customcard'
-import { IconBed, IconCar, IconHeart, IconHome, IconBath } from '@tabler/icons-react';
+import { ProjectPreview } from '@/components/ProjectPreview'
+import { IconBed, IconCar, IconHeart, IconHome, IconBath, IconHome2 } from '@tabler/icons-react';
 import { Group } from '@mantine/core';
 import { CarouselSlide } from '@mantine/carousel';
 import { Carousel } from '@mantine/carousel';
 import { InputWithButton } from '@/components/searchbar';
 import classes from '../styles/Carousel.module.css'
-import CarouselComponent from '@/components/carousel';
+import CarouselComponent from '@/components/projectpreviewcarousel';
 
 const data1 = {
-	image:
+	previewimage:
 		'http://powerhomerealty27.com/wp-content/uploads/2023/09/Ayanna-BukitJalil-Gallery2.png',
 	title: 'Ayanna',
 	location: 'Bukit Jalil',
@@ -21,11 +21,31 @@ const data1 = {
 		{ label: '2 Bathrooms', icon: IconBath },
 		{ label: '1115 sqft', icon: IconHome },
 		{ label: '1 Parking Spot', icon: IconCar },
+		{ label: 'RM880 per SQFT', icon: IconHome2},
 	],
+
+	images: [
+		'https://powerhomerealty27.com/wp-content/uploads/2023/09/Ayanna-BukitJalil-Gallery3.png',
+		'https://powerhomerealty27.com/wp-content/uploads/2023/09/Ayanna-BukitJalil-Gallery4.png',
+	],
+
+	developer: "Chin Hin Property Developer",
+	price: "RM 800K*",
+	slogan: "Experience Luxury Living at the Heart of the City",
+	completiondate: "Q3 2027",
+	holdtype: "Freehold",
+
+	reasonsforsale: [
+		'Prime Location',
+		'Go anywhere with 3 Major Highways',
+		'MRT walking distance',
+		'Shopping Mall in short drive distance',
+		'Many facilities',
+	]
 };
 
 const data2 = {
-	image:
+	previewimage:
 		'https://powerhomerealty27.com/wp-content/uploads/2023/06/AVENUEK.jpg',
 	title: 'Kyliez Suite',
 	location: 'KLCC, KL',
@@ -36,7 +56,28 @@ const data2 = {
 		{ label: '2 Bathrooms', icon: IconBath },
 		{ label: '650 sqft', icon: IconHome },
 		{ label: '1 Parking Spot', icon: IconCar },
+		{ label: 'RM880 per SQFT', icon: IconHome2},
 	],
+
+	images: [
+		'https://powerhomerealty27.com/wp-content/uploads/2023/09/Ayanna-BukitJalil-Gallery3.png',
+		'https://powerhomerealty27.com/wp-content/uploads/2023/09/Ayanna-BukitJalil-Gallery4.png',
+	],
+
+	developer: "Chin Hin Property Developer",
+	price: "RM 750K*",
+	slogan: "Experience Luxury Living at the Heart of the City",
+	completiondate: "Q3 2027",
+	holdtype: "Leasehold",
+
+	reasonsforsale: [
+		'Prime Location',
+		'Go anywhere with 3 Major Highways',
+		'MRT walking distance',
+		'Shopping Mall in short drive distance',
+		'Many facilities',
+	]
+
 };
 
 const projectData = [data1, data2];
