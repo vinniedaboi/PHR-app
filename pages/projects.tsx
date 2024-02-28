@@ -9,6 +9,8 @@ import { InputWithButton } from '@/components/searchbar';
 import classes from '../styles/Carousel.module.css'
 import CarouselComponent from '@/components/projectpreviewcarousel';
 
+// figure out how to load data from database.
+
 const data1 = {
 	previewimage:
 		'http://powerhomerealty27.com/wp-content/uploads/2023/09/Ayanna-BukitJalil-Gallery2.png',
@@ -41,6 +43,14 @@ const data1 = {
 		'MRT walking distance',
 		'Shopping Mall in short drive distance',
 		'Many facilities',
+	],
+
+	mapembed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.1352907763708!2d101.64731691187522!3d3.058458496904442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4b07881b4a63%3A0xe43cfea670167680!2sAyanna%20%40%20Bukit%20Jalil!5e0!3m2!1sen!2smy!4v1709095761689!5m2!1sen!2smy",
+	amenities: [
+		"Swimming Pool",
+		"Basketball Court",
+		"Meeting Room",
+		"Pool Room",
 	]
 };
 
@@ -76,8 +86,15 @@ const data2 = {
 		'MRT walking distance',
 		'Shopping Mall in short drive distance',
 		'Many facilities',
-	]
+	],
 
+	mapembed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.1352907763708!2d101.64731691187522!3d3.058458496904442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4b07881b4a63%3A0xe43cfea670167680!2sAyanna%20%40%20Bukit%20Jalil!5e0!3m2!1sen!2smy!4v1709095761689!5m2!1sen!2smy",
+	amenities: [
+		"Swimming Pool",
+		"Basketball Court",
+		"Meeting Room",
+		"Pool Room",
+	]
 };
 
 const projectData = [data1, data2];

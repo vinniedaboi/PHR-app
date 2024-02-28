@@ -30,12 +30,14 @@ import { useDisclosure } from '@mantine/hooks'
 import classes from '../styles/BadgeCard.module.css'
 import { Carousel } from '@mantine/carousel'
 import ImageCarousel from './imagecarousel'
-import { IconCheck } from '@tabler/icons-react'
+import { IconCheck, IconMinus} from '@tabler/icons-react'
 import GoogleMap from './map'
 import DisplayMap from './map'
 import { useMemo } from 'react'
 import dynamic from 'next/dynamic'
 import 'leaflet/dist/leaflet.css'
+
+import { getXataClient } from "./xata";
 
 // this will be what the agent sees when they click on project details
 
@@ -57,6 +59,8 @@ export function ProjectDetails({ data }) {
 		completiondate,
 		holdtype,
 		reasonsforsale,
+		mapembed,
+		amenities,
 	} = data
 
 	const iconArrowDown = <IconArrowNarrowDown size={18} />
@@ -71,8 +75,14 @@ export function ProjectDetails({ data }) {
 		</Center>
 	))
 
+	console.log(mapembed)
+
 	const reasonsForSaleItems = reasonsforsale.map((reasons, index) => (
 		<List.Item key={index}>{reasons}</List.Item>
+	))
+
+	const amenitiesItems = amenities.map((amenity,index) => (
+		<List.Item key={index}>{amenity}</List.Item>
 	))
 
 	const Map = useMemo(
@@ -84,11 +94,14 @@ export function ProjectDetails({ data }) {
 		[],
 	)
 
+
 	const [opened, { toggle }] = useDisclosure(false)
 
 	const [opened1, { open, close }] = useDisclosure(false)
 
 	const [mapOpened, { toggle: toggleMap }] = useDisclosure(false)
+
+	const [amenitiesOpened, { toggle: toggleAmenities }] = useDisclosure(false)
 	return (
 		<Card bg='black' radius='md' p='md' className={classes.card} withBorder>
 			<Card.Section>
@@ -173,8 +186,58 @@ export function ProjectDetails({ data }) {
 									marginHeight='0'
 									marginWidth='0'
 									loading='lazy'
-									src='https://www.openstreetmap.org/export/embed.html?bbox=101.71093225479127%2C3.1578089740778252%2C101.71371906995775%2C3.16028892537222&amp;layer=mapnik&amp;marker=3.1590489504655705%2C101.7123256623745'
+									referrerpolicy='no-referrer-when-downgrade'
+									src={mapembed}
 								></iframe>
+							</Box>
+						</Collapse>
+						<Button
+							bg={'black'}
+							style={{
+								border: '1px solid gray', // Add gray border
+								borderRadius: '6px', // Add border-radius for rounded corners
+								display: 'flex', // Use flex display
+								justifyContent: 'space-between', // Space between contents
+								alignItems: 'center', // Center items vertically
+								padding: '10px 16px', // Add padding
+							}}
+							onClick={toggleAmenities}
+							rightSection={amenitiesOpened ? iconArrowUp : iconArrowDown}
+						>
+							Amenities
+						</Button>
+						<Collapse in={amenitiesOpened}>
+							<Box>
+								<List
+									spacing='md'
+									size='sm'
+									center
+									icon={
+											<IconMinus size={18}/>
+									}
+								>
+									{amenitiesItems}
+								</List>
+							</Box>
+						</Collapse>
+						<Button
+							bg={'black'}
+							style={{
+								border: '1px solid gray', // Add gray border
+								borderRadius: '6px', // Add border-radius for rounded corners
+								display: 'flex', // Use flex display
+								justifyContent: 'space-between', // Space between contents
+								alignItems: 'center', // Center items vertically
+								padding: '10px 16px', // Add padding
+							}}
+							onClick={toggleAmenities}
+							rightSection={amenitiesOpened ? iconArrowUp : iconArrowDown}
+						>
+							Unit Types
+						</Button>
+						<Collapse in={amenitiesOpened}>
+							<Box>
+								<Text>Units here</Text>
 							</Box>
 						</Collapse>
 					</Stack>
