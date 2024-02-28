@@ -19,13 +19,14 @@
   text-transform: uppercase;
   font-size: var(--mantine-font-size-xs);
   font-weight: 700;
-  color: var(--mantine-color-white)
+  color: var(--mantine-color-white);
+	padding-top: 3px;
 }
 
 .text {
   font-size: var(--mantine-font-size-xs);
   font-weight: 700;
-  color: var(--mantine-color-white)
+  color: var(--mantine-color-white);
 }
 
 .badge {
@@ -38,3 +39,5 @@
   margin-right: rem(5px);
   color: light-dark(var(--mantine-color-gray-5), var(--mantine-color-dark-2));
 }
+
+

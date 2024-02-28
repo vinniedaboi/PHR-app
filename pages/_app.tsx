@@ -3,6 +3,8 @@ import { ThemeProvider } from 'next-themes';
 import '@mantine/core/styles.css';
 import '@mantine/carousel/styles.css';
 import '@/styles/globals.css';
+import 'leaflet/dist/leaflet.css';
+
 import { MantineProvider } from '@mantine/core';
 export default function App({ Component, pageProps }: AppProps) {
   return (

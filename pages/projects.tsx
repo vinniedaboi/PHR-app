@@ -60,8 +60,8 @@ const data2 = {
 	],
 
 	images: [
-		'https://powerhomerealty27.com/wp-content/uploads/2023/09/Ayanna-BukitJalil-Gallery3.png',
-		'https://powerhomerealty27.com/wp-content/uploads/2023/09/Ayanna-BukitJalil-Gallery4.png',
+		'https://klcckyliezsuites.com/wp-content/uploads/2023/07/KLCC-Kyliez-Suites-FREEHOLD-Exism-Project-4-1024x576.jpg',
+		'https://my1-cdn.pgimgs.com/listing/38194235/UPHO.223142305.V800/Kyliez-Suite-KL-City-Malaysia.jpg',
 	],
 
 	developer: "Chin Hin Property Developer",
@@ -81,6 +81,8 @@ const data2 = {
 };
 
 const projectData = [data1, data2];
+
+
 
 const Projects = () => (
 	<Page>
