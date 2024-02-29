@@ -1,4 +1,5 @@
 const { MongoClient, ServerApiVersion } = require("mongodb");
+const fs = require('fs').promises;
 
 export default async function handler(req, res) {
 	if (req.method === 'GET') {
@@ -17,7 +18,7 @@ export default async function handler(req, res) {
 			await client.connect()
 			const db = client.db("Projects")
 			const posts = await db.collection('Properties').find({}).toArray()
-
+			await fs.writeFile('projects.json', JSON.stringify(posts, null, 2));
 			res.status(200).json(posts)
 		} catch (error) {
 			res.status(500).json({ error: 'Unable to connect to database' })

@@ -1,6 +1,6 @@
 import { Carousel } from '@mantine/carousel';
 import { Image } from '@mantine/core';
-import classes from '../styles/Carousel.module.css'
+import classes from '../styles/ProjectDetails.module.css'
 
 const ImageCarousel = ({ images }) => {
 

@@ -6,11 +6,10 @@ Welcome to the PHR App Project
 
 PHR is a comprehensive application tailored for property agents, providing tools for efficient project selling, appointment and sales management, and team collaboration. PHR aims to streamline workflows and enhance productivity for professionals in the real estate industry.
 
-
 ## Author
 
 - **Author:** Vincent Ng
-- **Contact:** vinnie5224@gmail.com
+- **Contact:** [vinnie5224@gmail.com](mailto:vinnie5224@gmail.com)
 
 ## Updates
 
@@ -39,20 +38,23 @@ This project utilizes modern web technologies to provide a seamless user experie
 To set up the project locally, follow these steps:
 
 1. **Clone the Repository:**
-    ```bash
-    git clone https://github.com/your-username/PHR.git
-    ```
+
+   ```bash
+   git clone https://github.com/your-username/PHR.git
+   ```
 
 2. **Install Dependencies:**
-    ```bash
-    cd PHR
-    npm install
-    ```
+
+   ```bash
+   cd PHR
+   npm install
+   ```
 
 3. **Run the App:**
-    ```bash
-    npm start
-    ```
+
+   ```bash
+   npm start
+   ```
 
 ## Deployment
 
@@ -61,4 +63,3 @@ To deploy the app to production, you can use services like Vercel or Netlify. Ma
 ## Currently Working On
 
 - Implementing features mentioned above
-

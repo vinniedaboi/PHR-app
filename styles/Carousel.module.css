@@ -1,10 +1,13 @@
 .control {
-    height: 20px; /* Default height for smaller screens or devices */
+    height: 10px; /* Default height for smaller screens or devices */
     outline: 2px solid white;
     outline-offset: -2px;
     background-color: white;
 }
 
-.controls{
-  top: 100px;
+.controls {
+	top: 50px;
+	height: -50px;
+	transition: opacity 150ms ease;
+  opacity: 0;
 }

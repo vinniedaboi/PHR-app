@@ -1,128 +1,114 @@
 import Page from '@/components/page'
 import Section from '@/components/section'
 import { ProjectPreview } from '@/components/ProjectPreview'
-import { IconBed, IconCar, IconHeart, IconHome, IconBath, IconHome2 } from '@tabler/icons-react';
-import { Group } from '@mantine/core';
-import { CarouselSlide } from '@mantine/carousel';
-import { Carousel } from '@mantine/carousel';
-import { InputWithButton } from '@/components/searchbar';
+import {
+	IconBed,
+	IconCar,
+	IconHeart,
+	IconHome,
+	IconBath,
+	IconHome2,
+	IconRefresh,
+} from '@tabler/icons-react'
+import { Button, Group } from '@mantine/core'
+import { CarouselSlide } from '@mantine/carousel'
+import { Carousel } from '@mantine/carousel'
+import { InputWithButton } from '@/components/searchbar'
 import classes from '../styles/Carousel.module.css'
-import CarouselComponent from '@/components/projectpreviewcarousel';
-
+import CarouselComponent from '@/components/projectpreviewcarousel'
+import { useEffect, useState } from 'react'
 // figure out how to load data from database.
-
-const data1 = {
-	previewimage:
-		'http://powerhomerealty27.com/wp-content/uploads/2023/09/Ayanna-BukitJalil-Gallery2.png',
-	title: 'Ayanna',
-	location: 'Bukit Jalil',
-	description:
-		'Ayanna Resort Residences offers an extensive array of world-class facilities, including a sprawling 1.3-acre recreational park. This lush green space is inspired by nature and provides a serene oasis for residents to unwind and connect with the outdoors. Live a life well connected at Bukit Jalil.',
-	specification: [
-		{ label: '3 Bedrooms', icon: IconBed },
-		{ label: '2 Bathrooms', icon: IconBath },
-		{ label: '1115 sqft', icon: IconHome },
-		{ label: '1 Parking Spot', icon: IconCar },
-		{ label: 'RM880 per SQFT', icon: IconHome2},
-	],
-
-	images: [
-		'https://powerhomerealty27.com/wp-content/uploads/2023/09/Ayanna-BukitJalil-Gallery3.png',
-		'https://powerhomerealty27.com/wp-content/uploads/2023/09/Ayanna-BukitJalil-Gallery4.png',
-	],
-
-	developer: "Chin Hin Property Developer",
-	price: "RM 800K*",
-	slogan: "Experience Luxury Living at the Heart of the City",
-	completiondate: "Q3 2027",
-	holdtype: "Freehold",
-
-	reasonsforsale: [
-		'Prime Location',
-		'Go anywhere with 3 Major Highways',
-		'MRT walking distance',
-		'Shopping Mall in short drive distance',
-		'Many facilities',
-	],
-
-	mapembed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.1352907763708!2d101.64731691187522!3d3.058458496904442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4b07881b4a63%3A0xe43cfea670167680!2sAyanna%20%40%20Bukit%20Jalil!5e0!3m2!1sen!2smy!4v1709095761689!5m2!1sen!2smy",
-	amenities: [
-		"Swimming Pool",
-		"Basketball Court",
-		"Meeting Room",
-		"Pool Room",
-	]
-};
-
-const data2 = {
-	previewimage:
-		'https://powerhomerealty27.com/wp-content/uploads/2023/06/AVENUEK.jpg',
-	title: 'Kyliez Suite',
-	location: 'KLCC, KL',
-	description:
-		'Introducing Kyliez Suite, an extraordinary KLCC Tier 1 Project, harmoniously blending opulence with its iconic surroundings. With rare freehold status, it embodies exclusivity in the world of real estate. Choose from meticulously curated layouts designed to cater to diverse desires. Immerse yourself in luxury, near renowned shopping destinations that fulfill every whim. Experience the unrivaled living you deserve, where sophistication and convenience intertwine.',
-	specification: [
-		{ label: '2 Bedrooms', icon: IconBed },
-		{ label: '2 Bathrooms', icon: IconBath },
-		{ label: '650 sqft', icon: IconHome },
-		{ label: '1 Parking Spot', icon: IconCar },
-		{ label: 'RM880 per SQFT', icon: IconHome2},
-	],
-
-	images: [
-		'https://klcckyliezsuites.com/wp-content/uploads/2023/07/KLCC-Kyliez-Suites-FREEHOLD-Exism-Project-4-1024x576.jpg',
-		'https://my1-cdn.pgimgs.com/listing/38194235/UPHO.223142305.V800/Kyliez-Suite-KL-City-Malaysia.jpg',
-	],
-
-	developer: "Chin Hin Property Developer",
-	price: "RM 750K*",
-	slogan: "Experience Luxury Living at the Heart of the City",
-	completiondate: "Q3 2027",
-	holdtype: "Leasehold",
-
-	reasonsforsale: [
-		'Prime Location',
-		'Go anywhere with 3 Major Highways',
-		'MRT walking distance',
-		'Shopping Mall in short drive distance',
-		'Many facilities',
-	],
-
-	mapembed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.1352907763708!2d101.64731691187522!3d3.058458496904442!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4b07881b4a63%3A0xe43cfea670167680!2sAyanna%20%40%20Bukit%20Jalil!5e0!3m2!1sen!2smy!4v1709095761689!5m2!1sen!2smy",
-	amenities: [
-		"Swimming Pool",
-		"Basketball Court",
-		"Meeting Room",
-		"Pool Room",
-	]
-};
-
-const projectData = [data1, data2];
+import project from '../projects.json'
 
 
+const mapIconStringToObject = (iconString) => {
+	switch (iconString) {
+		case 'IconBed':
+			return IconBed
+		case 'IconBath':
+			return IconBath
+		case 'IconHome':
+			return IconHome
+		case 'IconCar':
+			return IconCar
+		case 'IconHome2':
+			return IconHome2
+		default:
+			// You can handle an unknown icon string here, or just return null
+			return null
+	}
+}
 
-const Projects = () => (
-	<Page>
-		<div>
-			<InputWithButton></InputWithButton>
-		</div>
-		<br></br>
-		<div>
-			<h1 className='font-bold text-2xl'>Latest Projects</h1>
+// Now, you can use this function when parsing your JSON data
+const parseJsonData = (jsonData) => {
+	return jsonData.map((item) => ({
+		previewimage: item.previewimage,
+		title: item.title,
+		location: item.location,
+		description: item.description,
+		specification: item.specification.map(({ label, icon }) => ({
+			label,
+			icon: mapIconStringToObject(icon),
+		})),
+		images: item.images,
+		developer: item.developer,
+		price: item.price,
+		slogan: item.slogan,
+		completiondate: item.completiondate,
+		holdtype: item.holdtype,
+		reasonsforsale: item.reasonsforsale,
+		mapembed: item.mapembed,
+		amenities: item.amenities,
+		unitTypes: item.unitTypes
+	}))
+}
+
+const projectData = parseJsonData(project);
+
+export default function Projects() {
+	const [projectDatas, setProjectData] = useState([])
+
+	const fetchData = async () => {
+		try {
+			const response = await fetch('/api/post')
+			if (response.ok) {
+				const data = await response.json()
+				setProjectData(data)
+			} else {
+				console.error(`Error fetching data. Status: ${response.status}`)
+			}
+		} catch (error) {
+			console.error('Error fetching project data:', error.message)
+		}
+	}
+
+	return (
+		<Page>
+			<div>
+				<InputWithButton></InputWithButton>
+			</div>
 			<br></br>
-		</div>
-		<div>
-			<CarouselComponent data={projectData}/>
-		</div>
-		<br></br>
-		<div>
-			<h1 className='font-bold text-2xl'>100% Express Commision</h1>
-		</div>
-		<br></br>
-		<div>
-			<CarouselComponent data={projectData}/>
-		</div>
-	</Page>
-)
-
-export default Projects
+			<div>
+				<Button onClick={fetchData} variant='outline' rightSection={<IconRefresh size={14}/>}>
+					Refresh
+				</Button>
+			</div>
+			<br></br>
+			<div>
+				<h1 className='font-bold text-2xl'>Latest Projects</h1>
+				<br></br>
+			</div>
+			<div>
+				<CarouselComponent data={projectData} />
+			</div>
+			<br></br>
+			<div>
+				<h1 className='font-bold text-2xl'>100% Express Commision</h1>
+			</div>
+			<br></br>
+			<div>
+				<CarouselComponent data={projectData} />
+			</div>
+		</Page>
+	)
+}

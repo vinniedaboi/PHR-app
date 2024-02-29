@@ -7,7 +7,7 @@ import { Flex } from '@mantine/core';
 const CarouselComponent = ({ data }) => {
 
   return (
-      <Carousel classNames={classes} slideGap="md">
+      <Carousel classNames={classes} withControls={false} slideGap="md">
         {data.map((item, index) => (
           <Carousel.Slide key={index}>
             <ProjectPreview data={item} />

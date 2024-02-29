@@ -25,19 +25,20 @@ import {
 	ThemeIcon,
 	rem,
 	Box,
+	Grid,
 } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import classes from '../styles/BadgeCard.module.css'
 import { Carousel } from '@mantine/carousel'
 import ImageCarousel from './imagecarousel'
-import { IconCheck, IconMinus} from '@tabler/icons-react'
+import { IconCheck, IconMinus } from '@tabler/icons-react'
 import GoogleMap from './map'
 import DisplayMap from './map'
 import { useMemo } from 'react'
 import dynamic from 'next/dynamic'
 import 'leaflet/dist/leaflet.css'
 
-import { getXataClient } from "./xata";
+import { getXataClient } from './xata'
 
 // this will be what the agent sees when they click on project details
 
@@ -61,6 +62,7 @@ export function ProjectDetails({ data }) {
 		reasonsforsale,
 		mapembed,
 		amenities,
+		unitTypes,
 	} = data
 
 	const iconArrowDown = <IconArrowNarrowDown size={18} />
@@ -77,11 +79,25 @@ export function ProjectDetails({ data }) {
 
 	console.log(mapembed)
 
+	const unitTypeCards = unitTypes
+		? unitTypes.map((unitType, index) => (
+				<Card bg={'black'} className={classes.card} key={index} p='md' radius='md' withBorder component='a' href={unitType.image}>
+					<Card.Section>
+						<Image src={unitType.image} alt={unitType.type} height={200} width={200} />
+					</Card.Section>
+
+					<Group justify='space-between' mt='md' mb='xs'>
+						<Text fw={500}>{unitType.type}</Text>
+					</Group>
+				</Card>
+			))
+		: null
+
 	const reasonsForSaleItems = reasonsforsale.map((reasons, index) => (
 		<List.Item key={index}>{reasons}</List.Item>
 	))
 
-	const amenitiesItems = amenities.map((amenity,index) => (
+	const amenitiesItems = amenities.map((amenity, index) => (
 		<List.Item key={index}>{amenity}</List.Item>
 	))
 
@@ -94,7 +110,6 @@ export function ProjectDetails({ data }) {
 		[],
 	)
 
-
 	const [opened, { toggle }] = useDisclosure(false)
 
 	const [opened1, { open, close }] = useDisclosure(false)
@@ -102,6 +117,8 @@ export function ProjectDetails({ data }) {
 	const [mapOpened, { toggle: toggleMap }] = useDisclosure(false)
 
 	const [amenitiesOpened, { toggle: toggleAmenities }] = useDisclosure(false)
+
+	const [unitsOpened, { toggle: toggleUnits }] = useDisclosure(false)
 	return (
 		<Card bg='black' radius='md' p='md' className={classes.card} withBorder>
 			<Card.Section>
@@ -212,9 +229,7 @@ export function ProjectDetails({ data }) {
 									spacing='md'
 									size='sm'
 									center
-									icon={
-											<IconMinus size={18}/>
-									}
+									icon={<IconMinus size={18} />}
 								>
 									{amenitiesItems}
 								</List>
@@ -230,15 +245,13 @@ export function ProjectDetails({ data }) {
 								alignItems: 'center', // Center items vertically
 								padding: '10px 16px', // Add padding
 							}}
-							onClick={toggleAmenities}
-							rightSection={amenitiesOpened ? iconArrowUp : iconArrowDown}
+							onClick={toggleUnits}
+							rightSection={unitsOpened ? iconArrowUp : iconArrowDown}
 						>
 							Unit Types
 						</Button>
-						<Collapse in={amenitiesOpened}>
-							<Box>
-								<Text>Units here</Text>
-							</Box>
+						<Collapse in={unitsOpened}>
+							{unitTypeCards}
 						</Collapse>
 					</Stack>
 				</Stack>
