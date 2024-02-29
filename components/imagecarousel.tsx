@@ -5,7 +5,7 @@ import classes from '../styles/ProjectDetails.module.css'
 const ImageCarousel = ({ images} : any) => {
 
     return (
-        <Carousel classNames={classes} slideGap="md">
+        <Carousel classNames={classes} slideGap="md" withControls={true}>
             {images.map((images: string) => (
                 <Carousel.Slide key={images}>
                     <Image src={images} alt='Display image' />

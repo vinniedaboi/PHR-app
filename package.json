@@ -6,7 +6,8 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"lint": "next lint"
+		"lint": "next lint",
+		"export-cordova": "next build && next export && next-cordova-export"
 	},
 	"dependencies": {
 		"@capacitor/android": "^5.7.0",
@@ -31,6 +32,7 @@
 		"leaflet-defaulticon-compatibility": "^0.1.2",
 		"mongodb": "^6.3.0",
 		"next": "13.5.4",
+		"next-cordova-exporter": "^1.0.19",
 		"next-pwa": "^5.6.0",
 		"next-themes": "^0.2.1",
 		"react": "^18.2.0",
@@ -43,6 +45,10 @@
 		"@types/node": "^20.8.4",
 		"@types/react": "^18.2.28",
 		"autoprefixer": "^10.4.16",
+		"cordova-android": "^7.1.4",
+		"cordova-browser": "^5.0.4",
+		"cordova-ios": "^7.0.1",
+		"cordova-plugin-whitelist": "^1.3.5",
 		"eslint": "^8.51.0",
 		"eslint-config-next": "^13.5.4",
 		"eslint-config-prettier": "^9.0.0",
@@ -60,5 +66,14 @@
 		"singleQuote": true,
 		"jsxSingleQuote": true,
 		"useTabs": true
+	},
+	"cordova": {
+		"platforms": [
+			"browser",
+			"android"
+		],
+		"plugins": {
+			"cordova-plugin-whitelist": {}
+		}
 	}
 }
