@@ -1,6 +1,6 @@
 import Page from '@/components/page'
 import Section from '@/components/section'
-import { ProjectPreview } from '@/components/ProjectPreview'
+import { ProjectPreview } from '@/components/projectpreview'
 import {
 	IconBed,
 	IconCar,
@@ -20,8 +20,7 @@ import { useEffect, useState } from 'react'
 // figure out how to load data from database.
 import project from '../projects.json'
 
-
-const mapIconStringToObject = (iconString) => {
+const mapIconStringToObject = (iconString: any) => {
 	switch (iconString) {
 		case 'IconBed':
 			return IconBed
@@ -40,13 +39,13 @@ const mapIconStringToObject = (iconString) => {
 }
 
 // Now, you can use this function when parsing your JSON data
-const parseJsonData = (jsonData) => {
-	return jsonData.map((item) => ({
+const parseJsonData = (jsonData: any) => {
+	return jsonData.map((item: any) => ({
 		previewimage: item.previewimage,
 		title: item.title,
 		location: item.location,
 		description: item.description,
-		specification: item.specification.map(({ label, icon }) => ({
+		specification: item.specification.map(({ label, icon }: any) => ({
 			label,
 			icon: mapIconStringToObject(icon),
 		})),
@@ -59,26 +58,29 @@ const parseJsonData = (jsonData) => {
 		reasonsforsale: item.reasonsforsale,
 		mapembed: item.mapembed,
 		amenities: item.amenities,
-		unitTypes: item.unitTypes
+		unitTypes: item.unitTypes,
 	}))
 }
 
-const projectData = parseJsonData(project);
+const projectData = parseJsonData(project)
 
 export default function Projects() {
-	const [projectDatas, setProjectData] = useState([])
 
 	const fetchData = async () => {
 		try {
 			const response = await fetch('/api/post')
 			if (response.ok) {
-				const data = await response.json()
-				setProjectData(data)
+				console.log(response)
+				console.log("Fetched data")
 			} else {
 				console.error(`Error fetching data. Status: ${response.status}`)
 			}
-		} catch (error) {
-			console.error('Error fetching project data:', error.message)
+		} catch (error: unknown) {
+			if (error instanceof Error) {
+				console.error('Error fetching project data:', error.message)
+			} else {
+				console.error('An unknown error occurred:', error)
+			}
 		}
 	}
 
@@ -89,7 +91,11 @@ export default function Projects() {
 			</div>
 			<br></br>
 			<div>
-				<Button onClick={fetchData} variant='outline' rightSection={<IconRefresh size={14}/>}>
+				<Button
+					onClick={fetchData}
+					variant='outline'
+					rightSection={<IconRefresh size={14} />}
+				>
 					Refresh
 				</Button>
 			</div>

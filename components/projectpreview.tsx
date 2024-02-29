@@ -26,7 +26,7 @@ import { ProjectDetails } from './projectdetails'
 
 // this will be what the agent sees when scrolling through project list.
 
-export function ProjectPreview({ data }) {
+export function ProjectPreview({ data } : any) {
 	const {
 		previewimage,
 		title,
@@ -37,7 +37,7 @@ export function ProjectPreview({ data }) {
 		images,
 	} = data
 
-	const features = specification.map((feature) => (
+	const features = specification.map((feature: any) => (
 		<Center key={feature.label}>
 			<feature.icon size='1.05rem' className={classes.icon} stroke={1.5} />
 			<Text className={classes.label} size='xs'>

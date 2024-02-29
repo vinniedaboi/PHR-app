@@ -32,13 +32,9 @@ import classes from '../styles/BadgeCard.module.css'
 import { Carousel } from '@mantine/carousel'
 import ImageCarousel from './imagecarousel'
 import { IconCheck, IconMinus } from '@tabler/icons-react'
-import GoogleMap from './map'
-import DisplayMap from './map'
 import { useMemo } from 'react'
 import dynamic from 'next/dynamic'
 import 'leaflet/dist/leaflet.css'
-
-import { getXataClient } from './xata'
 
 // this will be what the agent sees when they click on project details
 
@@ -46,7 +42,7 @@ import { getXataClient } from './xata'
 
 // just got done adding more details section, expand on it
 
-export function ProjectDetails({ data }) {
+export function ProjectDetails({ data } : any) {
 	const {
 		previewimage,
 		title,
@@ -68,7 +64,7 @@ export function ProjectDetails({ data }) {
 	const iconArrowDown = <IconArrowNarrowDown size={18} />
 	const iconArrowUp = <IconArrowNarrowUp size={18} />
 
-	const features = specification.map((feature) => (
+	const features = specification.map((feature: any) => (
 		<Center key={feature.label}>
 			<feature.icon size='1.05rem' className={classes.icon} stroke={1.5} />
 			<Text className={classes.label} size='xs'>
@@ -80,7 +76,7 @@ export function ProjectDetails({ data }) {
 	console.log(mapembed)
 
 	const unitTypeCards = unitTypes
-		? unitTypes.map((unitType, index) => (
+		? unitTypes.map((unitType : any, index : any) => (
 				<Card bg={'black'} className={classes.card} key={index} p='md' radius='md' withBorder component='a' href={unitType.image}>
 					<Card.Section>
 						<Image src={unitType.image} alt={unitType.type} height={200} width={200} />
@@ -93,22 +89,13 @@ export function ProjectDetails({ data }) {
 			))
 		: null
 
-	const reasonsForSaleItems = reasonsforsale.map((reasons, index) => (
+	const reasonsForSaleItems = reasonsforsale.map((reasons: any, index: any) => (
 		<List.Item key={index}>{reasons}</List.Item>
 	))
 
-	const amenitiesItems = amenities.map((amenity, index) => (
+	const amenitiesItems = amenities.map((amenity: any, index: any) => (
 		<List.Item key={index}>{amenity}</List.Item>
 	))
-
-	const Map = useMemo(
-		() =>
-			dynamic(() => import('@/components/Map'), {
-				loading: () => <p>A map is loading</p>,
-				ssr: false,
-			}),
-		[],
-	)
 
 	const [opened, { toggle }] = useDisclosure(false)
 
@@ -200,10 +187,10 @@ export function ProjectDetails({ data }) {
 									height='300'
 									frameBorder='0'
 									scrolling='no'
-									marginHeight='0'
-									marginWidth='0'
+									marginHeight={0}
+									marginWidth={0}
 									loading='lazy'
-									referrerpolicy='no-referrer-when-downgrade'
+									referrerPolicy='no-referrer-when-downgrade'
 									src={mapembed}
 								></iframe>
 							</Box>
