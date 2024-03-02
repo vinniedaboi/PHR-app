@@ -16,3 +16,4 @@ const ImageCarousel = ({ images} : any) => {
 };
 
 export default ImageCarousel;
+

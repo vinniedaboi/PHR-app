@@ -26,7 +26,7 @@ import { ProjectDetails } from './projectdetails'
 
 // this will be what the agent sees when scrolling through project list.
 
-export function ProjectPreview({ data } : any) {
+export function ProjectPreview({ data }: any) {
 	const {
 		previewimage,
 		title,
