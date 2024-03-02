@@ -15,7 +15,6 @@ import {
 import { Button, Group, Autocomplete, ActionIcon, Modal } from '@mantine/core'
 import { CarouselSlide } from '@mantine/carousel'
 import { Carousel } from '@mantine/carousel'
-import { InputWithButton } from '@/components/searchbar'
 import classes from '../styles/Carousel.module.css'
 import CarouselComponent from '@/components/projectpreviewcarousel'
 import { useEffect, useState } from 'react'
@@ -72,7 +71,7 @@ const projectData = parseJsonData(project)
 export default function Projects() {
 	const [opened1, setOpened1] = useState(false)
 	const [data, setData] = useState(null)
-	const [selectedProject, setSelectedProject] = useState(null)
+	const [selectedProject, setSelectedProject] = useState<string | undefined>(undefined);
 
 	const fetchData = async () => {
 		try {
@@ -92,7 +91,7 @@ export default function Projects() {
 		}
 	}
 
-	const handleAutocompleteChange = (value) => {
+	const handleAutocompleteChange = (value: any) => {
 		// Update the selected project when the Autocomplete value changes
 		setSelectedProject(value)
 	}
@@ -100,7 +99,7 @@ export default function Projects() {
 	const showProjectModal = () => {
 		if (selectedProject) {
 			const index = projectData.findIndex(
-				(project) => project.title === selectedProject,
+				(project: any) => project.title === selectedProject,
 			)
 			if (index !== -1) {
 				// The project was found in projectData, and its index is stored in the 'index' variable
@@ -129,7 +128,7 @@ export default function Projects() {
 			<div>
 				<Group>
 					<Autocomplete
-						data={projectData.map((project) => project.title)} // Use project names for autocomplete suggestions
+						data={projectData.map((project: any) => project.title)} // Use project names for autocomplete suggestions
 						radius='xl'
 						size='md'
 						placeholder='Search Projects..'
