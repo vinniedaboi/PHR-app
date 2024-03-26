@@ -7,10 +7,12 @@ import { useTheme } from 'next-themes'
 import { useState, useEffect } from 'react'
 import { Button, ButtonGroup } from '@chakra-ui/react'
 import Image from 'next/image'
+import { UserButton, OrganizationSwitcher } from '@clerk/nextjs'
 
 const links = [
 	{ label: 'Profile', href: '/profile' },
-	{ label: 'Projects', href: '/projects' }
+	{ label: 'Projects', href: '/projects' },
+	{ label: 'Sales', href: '/sales'}
 ]
 
 const Appbar = () => {
@@ -18,11 +20,16 @@ const Appbar = () => {
 	const isHomePage = router.pathname === '/';
 	const isProjectsPage = router.pathname === '/projects';
 	const isProfilePage = router.pathname === '/profile';
-	const h1Content = isHomePage ? 'Home' : isProjectsPage ? 'Projects' : isProfilePage ? 'Profile' : 'PHR Agent App';
+	const isSalePage = router.pathname === '/sales'
+	const h1Content = isHomePage ? 'Home' :
+	isProjectsPage ? 'Projects' :
+	isProfilePage ? 'Profile' :
+	isSalePage ? 'Sales' :
+	'PHR Agent App';
 
 	return (
 		<div className='fixed top-0 left-0 z-20 w-full bg-zinc-900 pt-safe'>
-			<header className='border-b-2  px-safe border-zinc-800 bg-zinc-900'>
+			<header className='border-b-2 px-safe border-zinc-800 bg-zinc-900'>
 				<div className='mx-auto flex h-20 max-w-screen-md items-center justify-between px-6'>
 					<Link href='/'>
 						<h1 className='font-black text-zinc-100 hover:text-zinc-400'>
@@ -45,6 +52,9 @@ const Appbar = () => {
 									</Link>
 								))}
 							</div>
+						</div>
+						<div className='flex space-x-6'>
+										<UserButton afterSignOutUrl='/'></UserButton>
 						</div>
 					</nav>
 				</div>

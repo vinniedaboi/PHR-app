@@ -12,4 +12,13 @@ module.exports = withPWA({
       "png.pngtree.com"
     ],
   },
+	async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/projects',
+        permanent: true,
+      },
+    ]
+  },
 })
