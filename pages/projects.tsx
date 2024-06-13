@@ -1,10 +1,7 @@
 import Page from '@/components/page'
-import Section from '@/components/section'
-import { ProjectPreview } from '@/components/projectpreview'
 import {
 	IconBed,
 	IconCar,
-	IconHeart,
 	IconHome,
 	IconBath,
 	IconHome2,
@@ -13,11 +10,8 @@ import {
 	IconArrowRight,
 } from '@tabler/icons-react'
 import { Button, Group, Autocomplete, ActionIcon, Modal } from '@mantine/core'
-import { CarouselSlide } from '@mantine/carousel'
-import { Carousel } from '@mantine/carousel'
-import classes from '../styles/Carousel.module.css'
 import CarouselComponent from '@/components/projectpreviewcarousel'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 // figure out how to load data from database.
 import project from '../projects.json'
 import { ProjectDetails } from '@/components/projectdetails'
