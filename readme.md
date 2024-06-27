@@ -13,7 +13,7 @@ PHR is a comprehensive application tailored for property agents, providing tools
 
 ## Updates
 
-Currently no updates as this is a heavy WIP
+Currently no updates as this is a private project, only the basic structure will be published
 
 ## Features
 
